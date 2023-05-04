@@ -62,6 +62,42 @@ options = {
         "15": {"name": "Include vector (--audit-include-vector)", "value": ""},
         }
     },
+    "5": {
+        "name": "HTTP",
+        "options": {
+        "1": {"name": "User agent (--http-user-agent)", "value": ""},
+        "2": {"name": "Request concurrency (--http-request-concurrency)", "value": ""},
+        "3": {"name": "Request timeout (--http-request-timeout)", "value": ""},
+        "4": {"name": "Request delay (--http-request-delay)", "value": ""},
+        "4": {"name": "Request redirect limit (--http-request-redirect-limit)", "value": ""},
+        "5": {"name": "Request queue size (--http-request-queue-size)", "value": ""},
+        "6": {"name": "Request header (--http-request-header)", "value": ""},
+        "7": {"name": "Response max size (--http-response-max-size)", "value": ""},
+        "8": {"name": "Cookie-jar (--http-cookie-jar)", "value": ""},
+        "9": {"name": "Cookie string (--http-cookie-string)", "value": ""},
+        "10": {
+            "name": "Authentication",
+            "options": {
+            "1": {"name": "Username (--http-authentication-username)", "value": ""},
+            "2": {"name": "Password (--http-authentication-password)", "value": ""},
+            "3": {"name": "Type (--http-authentication-type)", "value": ""},
+            },
+        },
+        "11": {"name": "Proxy (--http-proxy)", "value": ""},
+        "12": {"name": "Proxy authentication (--http-proxy-authentication)", "value": ""},
+        "13": {"name": "Proxy type (--http-proxy-type)", "value": ""},
+        "14": {"name": "SSL verify peer (--http-ssl-verify-peer)", "value": ""},
+        "15": {"name": "SSL verify host (--http-ssl-verify-host)", "value": ""},
+        "16": {"name": "SSL certificate (--http-ssl-certificate)", "value": ""},
+        "17": {"name": "SSL certificate type (--http-ssl-certificate-type)", "value": ""},
+        "18": {"name": "SSL key (--http-ssl-key)", "value": ""},
+        "19": {"name": "SSL key type (--http-ssl-key-type)", "value": ""},
+        "20": {"name": "SSL key password (--http-ssl-key-password)", "value": ""},
+        "21": {"name": "SSL CA (--http-ssl-ca)", "value": ""},
+        "22": {"name": "SSL CA directory (--http-ssl-ca-directory)", "value": ""},
+        "23": {"name": "SSL version (--http-ssl-version)", "value": ""},
+        },
+    },
     
 }
 
@@ -81,7 +117,14 @@ def display_options(selected_option):
     for key, value in options[selected_option]["options"].items():
         print(Fore.BLUE + key + ". " + value["name"])
     print(Style.RESET_ALL)
-
+    
+# Hiển thị tuỳ chọn
+def display_suboptions(selected_option):
+    os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    print(Fore.GREEN + "_______________" + options[selected_option]["name"].upper() + "___________________")
+    for key, value in options[selected_option]["options"].items():
+        print(Fore.BLUE + key + ". " + value["name"])
+    print(Style.RESET_ALL)
 
 # Nhập giá trị cho tuỳ chọn
 def input_option_value(option_name):
@@ -109,6 +152,12 @@ while True:
         display_options(selected_option)
         selected_sub_option = input(Fore.YELLOW + "Select sub-option: " + Style.RESET_ALL)
         option_name = options[selected_option]["options"][selected_sub_option]["name"]
+        if options[selected_option]["options"][selected_sub_option]["options"] is not None:
+            optiont = options[selected_option]["options"][selected_sub_option]["options"]
+            display_suboptions(optiont)
+            selected_optionsub = input(Fore.YELLOW + "Select subsub-option: " + Style.RESET_ALL)
+            option_name = optiont[selected_optionsub]["name"]
+            
         option_value = input_option_value(option_name)
         values[selected_sub_option] = {"name": option_name, "value": option_value}
         display_values(values)
