@@ -1,0 +1,37 @@
+•	Input
+o	Value (--input-value)
+o	Values file (--input-values-file)
+o	Without defaults (--input-without-defaults)
+o	Force (--input-force)
+•	Checks
+o	List (--checks-list)
+o	Load (--checks) 
+•	Plugins
+o	List (--plugins-list)
+o	Load (--plugin) 
+•	Platforms
+o	List (--platforms-list)
+o	Disable fingerprinting (--platforms-no-fingerprinting)
+o	Configure (--platforms) 
+•	Session
+o	Check URL (--session-check-url)
+o	Check pattern (--session-check-pattern)
+•	Profiles
+o	Save (--profile-save-filepath)
+o	Load (--profile-load-filepath)
+•	Browser cluster
+o	Local storage (--browser-cluster-local-storage)
+o	Wait for element (--browser-cluster-wait-for-element) 
+o	Pool size (--browser-cluster-pool-size)
+o	Job timeout (--browser-cluster-job-timeout)
+o	Worker time to live (--browser-cluster-worker-time-to-live)
+o	Ignore images (--browser-cluster-ignore-images)
+o	Screen width (--browser-cluster-screen-width)
+o	Screen height (--browser-cluster-screen-height)
+•	Report
+o	Save path (--report-save-path)
+•	Snapshot
+o	Save path (--snapshot-save-path)
+•	Timeout
+o	Timeout (--timeout)
+o	Suspend (--timeout-suspend)
