@@ -1,21 +1,38 @@
 {
+    "U": {
+        "name": "URL (Required)",
+        "options": {
+            "name": "URL",
+            "value": "",
+            "required": true
+        }
+    },
+    "R": {
+        "name": "Run Arachni",
+        "options": {
+            "required": false
+        }
+    },
     "1": {
         "name": "Generic",
         "options": {
             "1": {
                 "name": "Version",
                 "arg": "--version",
+                "required": false,
                 "value": ""
             },
             "2": {
                 "name": "Authorized by",
                 "value": "",
-                "arg": "--authorized-by"
+                "arg": "--authorized-by",
+                "required": false
             },
             "3": {
                 "name": "Daemon friendly",
                 "value": "",
-                "arg": "--daemon-friendly"
+                "arg": "--daemon-friendly",
+                "required": false
             }
         }
     },
@@ -25,17 +42,20 @@
             "1": {
                 "name": "Verbose",
                 "value": "",
-                "arg": "--verbose"
+                "arg": "--verbose",
+                "required": false
             },
             "2": {
                 "name": "Debug (--output-debug)",
                 "value": "",
-                "arg": "--output-debug"
+                "arg": "--output-debug",
+                "required": false
             },
             "3": {
                 "name": "Only positives (--output-only-positives)",
                 "value": "",
-                "arg": "--output-only-positives"
+                "arg": "--output-only-positives",
+                "required": false
             }
         }
     },
@@ -45,77 +65,92 @@
             "1": {
                 "name": "Include (--scope-include-pattern)",
                 "value": "",
-                "arg": "--scope-include-pattern"
+                "arg": "--scope-include-pattern",
+                "required": false
             },
             "2": {
                 "name": "Include subdomains (--scope-include-subdomains)",
                 "value": "",
-                "arg": "--scope-include-subdomains"
+                "arg": "--scope-include-subdomains",
+                "required": false
             },
             "3": {
                 "name": "Exclude (--scope-exclude-pattern)",
                 "value": "",
-                "arg": "--scope-exclude-pattern"
+                "arg": "--scope-exclude-pattern",
+                "required": false
             },
             "4": {
                 "name": "Exclude page by content (--scope-exclude-content-pattern)",
                 "value": "",
-                "arg": "--scope-exclude-content-pattern"
+                "arg": "--scope-exclude-content-pattern",
+                "required": false
             },
             "5": {
                 "name": "Exclude binaries (--scope-exclude-binaries)",
                 "value": "",
-                "arg": "--scope-exclude-binaries"
+                "arg": "--scope-exclude-binaries",
+                "required": false
             },
             "6": {
                 "name": "Redundant paths (--scope-redundant-path-pattern)",
                 "value": "",
-                "arg": "--scope-redundant-path-pattern"
+                "arg": "--scope-redundant-path-pattern",
+                "required": false
             },
             "7": {
                 "name": "Auto-redundant (--scope-auto-redundant)",
                 "value": "",
-                "arg": "--scope-auto-redundant"
+                "arg": "--scope-auto-redundant",
+                "required": false
             },
             "8": {
                 "name": "Directory depth limit (--scope-directory-depth-limit)",
                 "value": "",
-                "arg": "--scope-directory-depth-limit"
+                "arg": "--scope-directory-depth-limit",
+                "required": false
             },
             "9": {
                 "name": "Page limit (--scope-page-limit)",
                 "value": "",
-                "arg": "--scope-page-limit"
+                "arg": "--scope-page-limit",
+                "required": false
             },
             "10": {
                 "name": "Extend paths (--scope-extend-paths)",
                 "value": "",
-                "arg": "--scope-extend-paths"
+                "arg": "--scope-extend-paths",
+                "required": false
             },
             "11": {
                 "name": "Restrict paths (--scope-restrict-paths)",
                 "value": "",
-                "arg": "--scope-restrict-paths"
+                "arg": "--scope-restrict-paths",
+                "required": false
             },
             "12": {
                 "name": "URL rewrite (--scope-url-rewrite)",
                 "value": "",
-                "arg": "--scope-url-rewrite"
+                "arg": "--scope-url-rewrite",
+                "required": false
             },
             "13": {
                 "name": "DOM depth limit (--scope-dom-depth-limit)",
                 "value": "",
-                "arg": "--scope-dom-depth-limit"
+                "arg": "--scope-dom-depth-limit",
+                "required": false
             },
             "14": {
                 "name": "DOM event limit (--scope-dom-event-limit)",
                 "value": "",
-                "arg": "--scope-dom-event-limit"
+                "arg": "--scope-dom-event-limit",
+                "required": false
             },
             "15": {
                 "name": "HTTPS only (--scope-https-only)",
                 "value": "",
-                "arg": "--scope-https-only"
+                "arg": "--scope-https-only",
+                "required": false
             }
         }
     },
@@ -125,77 +160,92 @@
             "1": {
                 "name": "Links (--audit-links)",
                 "value": "",
-                "arg": "--audit-links"
+                "arg": "--audit-links",
+                "required": false
             },
             "2": {
                 "name": "Forms (--audit-forms)",
                 "value": "",
-                "arg": "--audit-forms"
+                "arg": "--audit-forms",
+                "required": false
             },
             "3": {
                 "name": "Cookies (--audit-cookies)",
                 "value": "",
-                "arg": "--audit-cookies"
+                "arg": "--audit-cookies",
+                "required": false
             },
             "4": {
                 "name": "Cookies extensively (--audit-cookies-extensively)",
                 "value": "",
-                "arg": "--audit-cookies-extensively"
+                "arg": "--audit-cookies-extensively",
+                "required": false
             },
             "5": {
                 "name": "Headers (--audit-headers)",
                 "value": "",
-                "arg": "--audit-headers"
+                "arg": "--audit-headers",
+                "required": false
             },
             "6": {
                 "name": "Link template (--audit-link-template)",
                 "value": "",
-                "arg": "--audit-link-template"
+                "arg": "--audit-link-template",
+                "required": false
             },
             "7": {
                 "name": "JSONs (--audit-jsons)",
                 "value": "",
-                "arg": "--audit-jsons"
+                "arg": "--audit-jsons",
+                "required": false
             },
             "8": {
                 "name": "XMLs (--audit-xmls)",
                 "value": "",
-                "arg": "--audit-xmls"
+                "arg": "--audit-xmls",
+                "required": false
             },
             "9": {
                 "name": "UI Inputs (--audit-ui-inputs)",
                 "value": "",
-                "arg": "--audit-ui-inputs"
+                "arg": "--audit-ui-inputs",
+                "required": false
             },
             "10": {
                 "name": "UI Forms (--audit-ui-forms)",
                 "value": "",
-                "arg": "--audit-ui-forms"
+                "arg": "--audit-ui-forms",
+                "required": false
             },
             "11": {
                 "name": "Parameter names (--audit-parameter-names)",
                 "value": "",
-                "arg": "--audit-parameter-names"
+                "arg": "--audit-parameter-names",
+                "required": false
             },
             "12": {
                 "name": "With extra parameter (--audit-with-extra-parameter)",
                 "value": "",
-                "arg": "--audit-with-extra-parameter"
+                "arg": "--audit-with-extra-parameter",
+                "required": false
             },
             "13": {
                 "name": "With both methods (--audit-with-both-methods)",
                 "value": "",
-                "arg": "--audit-with-both-methods"
+                "arg": "--audit-with-both-methods",
+                "required": false
             },
             "14": {
                 "name": "Exclude vector (--audit-exclude-vector)",
                 "value": "",
-                "arg": "--audit-exclude-vector"
+                "arg": "--audit-exclude-vector",
+                "required": false
             },
             "15": {
                 "name": "Include vector (--audit-include-vector)",
                 "value": "",
-                "arg": "--audit-include-vector"
+                "arg": "--audit-include-vector",
+                "required": false
             }
         }
     },
@@ -205,52 +255,62 @@
             "1": {
                 "name": "User agent (--http-user-agent)",
                 "value": "",
-                "arg": "--http-user-agent"
+                "arg": "--http-user-agent",
+                "required": false
             },
             "2": {
                 "name": "Request concurrency (--http-request-concurrency)",
                 "value": "",
-                "arg": "--http-request-concurrency"
+                "arg": "--http-request-concurrency",
+                "required": false
             },
             "3": {
                 "name": "Request timeout (--http-request-timeout)",
                 "value": "",
-                "arg": "--http-request-timeout"
+                "arg": "--http-request-timeout",
+                "required": false
             },
             "4": {
                 "name": "Request delay (--http-request-delay)",
                 "value": "",
-                "arg": "--http-request-delay"
+                "arg": "--http-request-delay",
+                "required": false
             },
             "5": {
                 "name": "Request redirect limit (--http-request-redirect-limit)",
                 "value": "",
-                "arg": "--http-request-redirect-limit"
+                "arg": "--http-request-redirect-limit",
+                "required": false
             },
             "6": {
                 "name": "Request queue size (--http-request-queue-size)",
                 "value": "",
-                "arg": "--http-request-queue-size"
+                "arg": "--http-request-queue-size",
+                "required": false
             },
             "7": {
                 "name": "Request header (--http-request-header)",
                 "value": "",
-                "arg": "--http-request-header"
+                "arg": "--http-request-header",
+                "required": false
             },
             "8": {
                 "name": "Response max size (--http-response-max-size)",
                 "value": "",
-                "arg": "--http-response-max-size"
+                "arg": "--http-response-max-size",
+                "required": false
             },
             "9": {
                 "name": "Cookie-jar (--http-cookie-jar)",
                 "value": "",
-                "arg": "--http-cookie-jar"
+                "arg": "--http-cookie-jar",
+                "required": false
             },
             "10": {
                 "name": "Cookie string (--http-cookie-string)",
                 "value": "",
-                "arg": "--http-cookie-string"
+                "arg": "--http-cookie-string",
+                "required": false
             },
             "11": {
                 "name": "Authentication",
@@ -258,83 +318,99 @@
                     "1": {
                         "name": "Username (--http-authentication-username)",
                         "value": "",
-                        "arg": "--http-authentication-username"
+                        "arg": "--http-authentication-username",
+                        "required": false
                     },
                     "2": {
                         "name": "Password (--http-authentication-password)",
                         "value": "",
-                        "arg": "--http-authentication-password"
+                        "arg": "--http-authentication-password",
+                        "required": false
                     },
                     "3": {
                         "name": "Type (--http-authentication-type)",
                         "value": "",
-                        "arg": "--http-authentication-type"
+                        "arg": "--http-authentication-type",
+                        "required": false
                     }
                 }
             },
             "12": {
                 "name": "Proxy (--http-proxy)",
                 "value": "",
-                "arg": "--http-proxy"
+                "arg": "--http-proxy",
+                "required": false
             },
             "13": {
                 "name": "Proxy authentication (--http-proxy-authentication)",
                 "value": "",
-                "arg": "--http-proxy-authentication"
+                "arg": "--http-proxy-authentication",
+                "required": false
             },
             "14": {
                 "name": "Proxy type (--http-proxy-type)",
                 "value": "",
-                "arg": "--http-proxy-type"
+                "arg": "--http-proxy-type",
+                "required": false
             },
             "15": {
                 "name": "SSL verify peer (--http-ssl-verify-peer)",
                 "value": "",
-                "arg": "--http-ssl-verify-peer"
+                "arg": "--http-ssl-verify-peer",
+                "required": false
             },
             "16": {
                 "name": "SSL verify host (--http-ssl-verify-host)",
                 "value": "",
-                "arg": "--http-ssl-verify-host"
+                "arg": "--http-ssl-verify-host",
+                "required": false
             },
             "17": {
                 "name": "SSL certificate (--http-ssl-certificate)",
                 "value": "",
-                "arg": "--http-ssl-certificate"
+                "arg": "--http-ssl-certificate",
+                "required": false
             },
             "18": {
                 "name": "SSL certificate type (--http-ssl-certificate-type)",
                 "value": "",
-                "arg": "--http-ssl-certificate-type"
+                "arg": "--http-ssl-certificate-type",
+                "required": false
             },
             "19": {
                 "name": "SSL key (--http-ssl-key)",
                 "value": "",
-                "arg": "--http-ssl-key"
+                "arg": "--http-ssl-key",
+                "required": false
             },
             "20": {
                 "name": "SSL key type (--http-ssl-key-type)",
                 "value": "",
-                "arg": "--http-ssl-key-type"
+                "arg": "--http-ssl-key-type",
+                "required": false
             },
             "21": {
                 "name": "SSL key password (--http-ssl-key-password)",
                 "arg": "--http-ssl-key-password",
+                "required": false,
                 "value": ""
             },
             "22": {
                 "name": "SSL CA",
                 "arg": "--http-ssl-ca",
+                "required": false,
                 "value": ""
             },
             "23": {
                 "name": "SSL CA directory",
                 "arg": "--http-ssl-ca-directory",
+                "required": false,
                 "value": ""
             },
             "24": {
                 "name": "SSL version",
                 "arg": "--http-ssl-version",
+                "required": false,
                 "value": ""
             }
         }
@@ -345,22 +421,26 @@
             "1": {
                 "name": "Value (--input-value)",
                 "value": "",
-                "arg": "--input-value"
+                "arg": "--input-value",
+                "required": false
             },
             "2": {
                 "name": "Value file (--input-value-file)",
                 "value": "",
-                "arg": "--input-value-file"
+                "arg": "--input-value-file",
+                "required": false
             },
             "3": {
                 "name": "Without defaults (--input-without-defaults)",
                 "value": "",
-                "arg": "--input-without-defaults"
+                "arg": "--input-without-defaults",
+                "required": false
             },
             "4": {
                 "name": "Force (--input-force)",
                 "value": "",
-                "arg": "--input-force"
+                "arg": "--input-force",
+                "required": false
             }
         }
     },
@@ -370,12 +450,14 @@
             "1": {
                 "name": "List",
                 "value": "",
-                "arg": "--checks-list"
+                "arg": "--checks-list",
+                "required": false
             },
             "2": {
                 "name": "Load",
                 "value": "",
-                "arg": "--checks"
+                "arg": "--checks",
+                "required": false
             }
         }
     },
@@ -385,12 +467,14 @@
             "1": {
                 "name": "List",
                 "value": "",
-                "arg": "--plugin-list"
+                "arg": "--plugin-list",
+                "required": false
             },
             "2": {
                 "name": "Load",
                 "value": "",
-                "arg": "--plugin"
+                "arg": "--plugin",
+                "required": false
             }
         }
     },
@@ -400,17 +484,20 @@
             "1": {
                 "name": "List",
                 "value": "",
-                "arg": "--platforms-list"
+                "arg": "--platforms-list",
+                "required": false
             },
             "2": {
                 "name": "Disable fingerprinting ",
                 "value": "",
-                "arg": "--platforms-no-fingerprinting"
+                "arg": "--platforms-no-fingerprinting",
+                "required": false
             },
             "3": {
                 "name": "Configure",
                 "value": "",
-                "arg": "--platforms"
+                "arg": "--platforms",
+                "required": false
             }
         }
     },
@@ -420,12 +507,14 @@
             "1": {
                 "name": "Check URL (--session-check-url)",
                 "value": "",
-                "arg": "--session-check-url"
+                "arg": "--session-check-url",
+                "required": false
             },
             "2": {
                 "name": "Check pattern",
                 "value": "",
-                "arg": "--session-check-pattern"
+                "arg": "--session-check-pattern",
+                "required": false
             }
         }
     },
@@ -435,12 +524,14 @@
             "1": {
                 "name": "Save",
                 "value": "",
-                "arg": "--profile-save-filepath"
+                "arg": "--profile-save-filepath",
+                "required": false
             },
             "2": {
                 "name": "Load",
                 "value": "",
-                "arg": "--profiles-load-filepath"
+                "arg": "--profiles-load-filepath",
+                "required": false
             }
         }
     },
@@ -450,42 +541,50 @@
             "1": {
                 "name": "Local storage (--browser-cluster-local-storage)",
                 "value": "",
-                "arg": "--browser-cluster-local-storage"
+                "arg": "--browser-cluster-local-storage",
+                "required": false
             },
             "2": {
                 "name": "Wait for element (--browser-cluster-wait-for-element)",
                 "value": "",
-                "arg": "--browser-cluster-wait-for-element"
+                "arg": "--browser-cluster-wait-for-element",
+                "required": false
             },
             "3": {
                 "name": "Pool size (--browser-cluster-pool-size)",
                 "value": "",
-                "arg": "--browser-cluster-pool-size"
+                "arg": "--browser-cluster-pool-size",
+                "required": false
             },
             "4": {
                 "name": "Job timeout (--browser-cluster-job-timeout)",
                 "value": "",
-                "arg": "--browser-cluster-job-timeout"
+                "arg": "--browser-cluster-job-timeout",
+                "required": false
             },
             "5": {
                 "name": "Worker time to live (--browser-cluster-worker-time-to-live)",
                 "value": "",
-                "arg": "--browser-cluster-worker-time-to-live"
+                "arg": "--browser-cluster-worker-time-to-live",
+                "required": false
             },
             "6": {
                 "name": "Ignore images (--browser-cluster-ignore-images)",
                 "value": "",
-                "arg": "--browser-cluster-ignore-images"
+                "arg": "--browser-cluster-ignore-images",
+                "required": false
             },
             "7": {
                 "name": "Screen width (--browser-cluster-screen-width)",
                 "value": "",
-                "arg": "--browser-cluster-screen-width"
+                "arg": "--browser-cluster-screen-width",
+                "required": false
             },
             "8": {
                 "name": "Screen height (--browser-cluster-screen-height)",
                 "value": "",
-                "arg": "--browser-cluster-screen-height"
+                "arg": "--browser-cluster-screen-height",
+                "required": false
             }
         }
     },
@@ -495,7 +594,8 @@
             "1": {
                 "name": "Save path (--report-save-path)",
                 "value": "",
-                "arg": "--report-save-path"
+                "arg": "--report-save-path",
+                "required": false
             }
         }
     },
@@ -505,7 +605,8 @@
             "1": {
                 "name": "Save path (--snapshot-save-path)",
                 "value": "",
-                "arg": "--snapshot-save-path"
+                "arg": "--snapshot-save-path",
+                "required": false
             }
         }
     },
@@ -515,16 +616,18 @@
             "1": {
                 "name": "Timeout (--timeout)",
                 "value": "",
-                "arg": "--timeout"
+                "arg": "--timeout",
+                "required": false
             },
             "2": {
                 "name": "Suspend (--timeout-suspend)",
                 "value": "",
-                "arg": "--timeout-suspend"
+                "arg": "--timeout-suspend",
+                "required": false
             }
         }
     },
-    "16":{
-        "name":"Exit"
+    "E": {
+        "name": "Exit"
     }
 }
