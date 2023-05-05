@@ -17,19 +17,19 @@
         "name": "Generic",
         "options": {
             "1": {
-                "name": "Version",
+                "name": "Version (--version)",
                 "arg": "--version",
                 "required": false,
                 "value": ""
             },
             "2": {
-                "name": "Authorized by",
+                "name": "Authorized by (--authorized-by)",
                 "value": "",
                 "arg": "--authorized-by",
                 "required": false
             },
             "3": {
-                "name": "Daemon friendly",
+                "name": "Daemon friendly (--daemon-friendly)",
                 "value": "",
                 "arg": "--daemon-friendly",
                 "required": false
@@ -40,7 +40,7 @@
         "name": "Output",
         "options": {
             "1": {
-                "name": "Verbose",
+                "name": "Verbose (--verbose)",
                 "value": "",
                 "arg": "--verbose",
                 "required": false
@@ -396,19 +396,19 @@
                 "value": ""
             },
             "22": {
-                "name": "SSL CA",
+                "name": "SSL CA  (--http-ssl-ca)",
                 "arg": "--http-ssl-ca",
                 "required": false,
                 "value": ""
             },
             "23": {
-                "name": "SSL CA directory",
+                "name": "SSL CA directory (--http-ssl-ca-directory)",
                 "arg": "--http-ssl-ca-directory",
                 "required": false,
                 "value": ""
             },
             "24": {
-                "name": "SSL version",
+                "name": "SSL version (--http-ssl-version)",
                 "arg": "--http-ssl-version",
                 "required": false,
                 "value": ""
@@ -448,13 +448,13 @@
         "name": "Checks",
         "options": {
             "1": {
-                "name": "List",
+                "name": "List (--checks-list)",
                 "value": "",
                 "arg": "--checks-list",
                 "required": false
             },
             "2": {
-                "name": "Load",
+                "name": "Load (--checks)",
                 "value": "",
                 "arg": "--checks",
                 "required": false
@@ -465,13 +465,13 @@
         "name": "Plugin",
         "options": {
             "1": {
-                "name": "List",
+                "name": "List (--plugin-list)",
                 "value": "",
                 "arg": "--plugin-list",
                 "required": false
             },
             "2": {
-                "name": "Load",
+                "name": "Load (--plugin)",
                 "value": "",
                 "arg": "--plugin",
                 "required": false
@@ -482,19 +482,19 @@
         "name": "Platforms",
         "options": {
             "1": {
-                "name": "List",
+                "name": "List (--platforms-list)",
                 "value": "",
                 "arg": "--platforms-list",
                 "required": false
             },
             "2": {
-                "name": "Disable fingerprinting ",
+                "name": "Disable fingerprinting (--platforms-no-fingerprinting)",
                 "value": "",
                 "arg": "--platforms-no-fingerprinting",
                 "required": false
             },
             "3": {
-                "name": "Configure",
+                "name": "Configure (--platforms)",
                 "value": "",
                 "arg": "--platforms",
                 "required": false
@@ -511,7 +511,7 @@
                 "required": false
             },
             "2": {
-                "name": "Check pattern",
+                "name": "Check pattern (--session-check-pattern)",
                 "value": "",
                 "arg": "--session-check-pattern",
                 "required": false
@@ -522,13 +522,13 @@
         "name": "Profiles",
         "options": {
             "1": {
-                "name": "Save",
+                "name": "Save (--profile-save-filepath)",
                 "value": "",
                 "arg": "--profile-save-filepath",
                 "required": false
             },
             "2": {
-                "name": "Load",
+                "name": "Load (--profiles-load-filepath)",
                 "value": "",
                 "arg": "--profiles-load-filepath",
                 "required": false
@@ -626,6 +626,9 @@
                 "required": false
             }
         }
+    },
+    "S":{
+        "name": "Show all options chosen"
     },
     "E": {
         "name": "Exit"
