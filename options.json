@@ -627,8 +627,11 @@
             }
         }
     },
-    "S":{
+    "S": {
         "name": "Show all options chosen"
+    },
+    "V": {
+        "name": "View report HTML"
     },
     "E": {
         "name": "Exit"

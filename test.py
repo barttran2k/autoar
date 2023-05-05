@@ -1,8 +1,8 @@
-import os,json
+import os,json,subprocess,sys
 from colorama import init, Fore, Style
 import keyboard
 import re
-
+import webbrowser
 def is_valid_url(url):
     regex = re.compile(
         r'^(?:http|ftp)s?://' # http:// or https:// or ftp:// or ftps://
@@ -172,7 +172,7 @@ while True:
             if selected_option.isnumeric():
                 processNumber(selected_option)
                 selected_option = ""
-            elif selected_option != "R" and selected_option !="S" and not selected_option.isnumeric():
+            elif selected_option != "R" and selected_option !="S" and selected_option !="V" and not selected_option.isnumeric():
                 processString(selected_option)
                 selected_option = ""
             elif selected_option == "R":
@@ -180,19 +180,51 @@ while True:
                     input(Fore.RED + "Please select at least one option.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
                 elif len(values) >= 1 and "U" in values.keys() and values["U"]["value"] != "":
-                    cmd = "./arachni/bin/arachni.cmd " + values["U"]["value"] + " "
+                    filename = values["U"]["value"]
+                    filename = re.search("(?<=://)([a-zA-Z0-9\-\.]+)", filename).group(1)
+                    cmd = "./arachni/bin/arachni " + values["U"]["value"] + " " + "--report-save-path ./report/" +  filename + ".afr"
                     for key, value in values.items():
-                        if key != "U":
-                            cmd += value['arg'] + " " + value["value"] + " "
+                        if key != "U" and key != "Report":
+                            cmd += value['arg'] + " " + value["value"] + " " 
                     selected_option = ""
                     input(cmd)
+                    os.setuid(1000)
+                    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+                    while process.poll() is None:
+                        output = process.stdout.readline().decode().rstrip()
+                        print(output)
+                    process.communicate()
                     
+                    cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/'+filename+' && rm ./report/' + filename + '.html.zip'
+                    process = subprocess.Popen(cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+                    while process.poll() is None:
+                        output = process.stdout.readline().decode().rstrip()
+                        print(output)
+                    process.communicate()
+                    input(Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
                 else:
                     input(Fore.RED + "Please input URL value.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
             elif selected_option == "S":
                 showAllValues()
                 selected_option = ""
+                
+            elif selected_option == "V":
+                if "U" in values.keys() and values["U"]["value"] != "":
+                    filename = values["U"]["value"]
+                    filename = re.search("(?<=://)([a-zA-Z0-9\-\.]+)", filename).group(1)
+                    foldername = "report/" + filename
+                    filenamehtml = "index.html"
+                    filehtmlpath = os.path.abspath(os.path.join(foldername, filenamehtml))
+                    try:
+                        cmd = "xdg-open "+ filehtmlpath 
+                        os.system(cmd)
+                    except:
+                        print("die")
+                    input(Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
+                    selected_option = ""
+                else:
+                    selected_option = ""
     except:
         if keyboard.is_pressed('ctrl+c'):
             print(Fore.RED + "Exiting....." + Style.RESET_ALL)
