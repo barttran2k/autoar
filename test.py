@@ -295,6 +295,7 @@ while True:
 
             elif selected_option == "V":
                 if len(filenames) > 0:
+                    updateFilenames()
                     choice = showFilenames()
                     filename = filenames[choice]
                     filehtmlpath = "file://" + \
