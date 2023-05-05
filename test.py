@@ -199,6 +199,4 @@ while True:
             exit()
         if selected_option not in options.keys():
             selected_option = ""
-        
-# display_options("U")
 
