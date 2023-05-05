@@ -180,7 +180,7 @@ while True:
                     input(Fore.RED + "Please select at least one option.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
                 elif len(values) >= 1 and "U" in values.keys() and values["U"]["value"] != "":
-                    cmd = "./archni.exe " + values["U"]["value"] + " "
+                    cmd = "./arachni/bin/arachni.cmd " + values["U"]["value"] + " "
                     for key, value in values.items():
                         if key != "U":
                             cmd += value['arg'] + " " + value["value"] + " "
