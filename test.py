@@ -13,6 +13,13 @@ selected_option = ""
 values = {}
 filenames = []
 
+# Ch3ck report f0ld3r
+if not os.path.exists("report"):
+    os.makedirs("report")
+    print("Created 'report' folder.")
+else:
+    print("'report' folder already exists.")
+    
 def is_valid_url(url):
     regex = re.compile(
         r'^(?:http|ftp)s?://'  # http:// or https:// or ftp:// or ftps://
