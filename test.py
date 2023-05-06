@@ -42,8 +42,8 @@ options = json.loads(open("options.json", "r", encoding='utf-8').read())
 
 
 def display_menu():
-    # os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
-    print(Fore.GREEN + "_______________MENU___________________")
+    os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    print(Fore.GREEN + "_______________MENU___________________\n")
     for key, value in options.items():
         print(Fore.BLUE + key + ". " + value["name"])
     print(Style.RESET_ALL)
@@ -51,7 +51,7 @@ def display_menu():
 
 # Hiển thị tuỳ chọn
 def display_options(selected_option):
-    # os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
     if selected_option.isnumeric():
         print(Fore.GREEN + "_______________" +
               options[selected_option]["name"].upper() + "___________________")
@@ -66,7 +66,7 @@ def display_options(selected_option):
 
 
 def display_sub_options(selected_option, selected_sub_option):
-    # os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
     print(Fore.GREEN + "_______________" +
           options[selected_option]["name"].upper() + "___________________")
     for key, value in options[selected_option]["options"][selected_sub_option]["options"].items():
@@ -83,7 +83,7 @@ def input_option_value(option_name):
 
 # Hiển thị các giá trị đã nhập
 def display_values(values):
-    # os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
     print(Fore.GREEN + "_______________VALUES___________________")
     for key, value in values.items():
         print(Fore.BLUE + value["name"] + ": " + Fore.YELLOW + value["value"])
@@ -124,27 +124,38 @@ def processNumber(selected_option):
                 option_value = input_option_value(option_name)
                 values[selected_option] = {
                     "name": option_name, "value": option_value, "arg": option_arg}
-                # args.append(values[selected_option])
+                
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
 
         except:
-            if choice != "1":
+            if choice != "1" and choice != '8':
                 option_value = input_option_value(option_name)
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
                 values[selected_option] = {
                     "name": option_name, "value": option_value, "arg": option_arg}
-                # args.append(values[selected_option])
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
+            elif choice == "8":
+                if selected_sub_option == "1":
+                    option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
+                    values[selected_option] = {'name': option_name, 'value': '', 'arg': option_arg}
+                elif selected_sub_option == "2":
+                    valarg = autoPlugin()
+                    option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
+                    print(valarg)
+                    values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
+                display_values(values)
+                input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
+                selected_option = ""    
             else:
                 option_value = ""
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
                 values[selected_option] = {
                     "name": option_name, "value": option_value, "arg": option_arg}
-                # args.append(values[selected_option])
+                
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
@@ -159,7 +170,7 @@ def processString(selected_option):
         option_value = input_option_value(options[selected_option]["name"])
         values[selected_option] = {
             "name": options[selected_option]["name"], "value": option_value}
-        # args.append(values[selected_option])
+        
         display_values(values)
         input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
         selected_option = ""
@@ -202,6 +213,22 @@ def showFilenames():
         else:
             break
     return int(choice)-1
+
+def autoPlugin():
+    print(Fore.GREEN + "Auto plugin" + Style.RESET_ALL)
+    print(Fore.YELLOW + "Please fill data" + Style.RESET_ALL)
+    valarg = ''
+    url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
+    while True:
+        if is_valid_url(url):
+            break
+        else:
+            print(Fore.RED + "Invalid URL..." + Style.RESET_ALL)
+            url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
+    parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)  
+    check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
+    valarg = 'autologin:url='+url+',parameters='+parameter+',check='+check
+    return valarg
 
 def showAllValues():
     for key, value in values.items():
