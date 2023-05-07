@@ -123,14 +123,8 @@ def processNumber(selected_option):
                 option_name = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["name"]
                 option_arg = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["arg"]
                 option_value = input_option_value(option_name)
-                if selected_option in values:
-                    values[selected_option][option_name] ["name"] = option_name
-                    values[selected_option][option_name] ["value"] = option_value
-                    values[selected_option][option_name] ["arg"] = option_arg
-                else:
-                    values[selected_option][option_name]  = {
-                        "name": option_name, "value": option_value, "arg": option_arg
-                    }
+                values[(selected_option+option_name)]
+                values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
@@ -139,21 +133,15 @@ def processNumber(selected_option):
             if choice != "1" and choice != '8':
                 option_value = input_option_value(option_name)
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                if selected_option in values:
-                    values[selected_option][option_name]["name"] = option_name
-                    values[selected_option][option_name]["value"] = option_value
-                    values[selected_option][option_name]["arg"] = option_arg
-                else:
-                    values[selected_option][option_name] = {
-                        "name": option_name, "value": option_value, "arg": option_arg
-                    }
+                values[selected_option] = {
+                    "name": option_name, "value": option_value, "arg": option_arg}
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
             elif choice == "8":
                 if selected_sub_option == "1":
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                    values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
+                    values[selected_option] = {'name': option_name, 'value': '', 'arg': option_arg}
                 elif selected_sub_option == "2":
                     valarg = autoPlugin()
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
@@ -161,19 +149,13 @@ def processNumber(selected_option):
                     values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
-                selected_option = ""
+                selected_option = ""    
             else:
                 option_value = ""
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                if selected_option in values:
-                    values[selected_option][option_name]["name"] = option_name
-                    values[selected_option][option_name]["value"] = option_value
-                    values[selected_option][option_name]["arg"] = option_arg
-                else:
-                    values[selected_option][option_name] = {
-                        "name": option_name, "value": option_value, "arg": option_arg
-                    }
-                    
+                values[selected_option] = {
+                    "name": option_name, "value": option_value, "arg": option_arg}
+                
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
@@ -201,7 +183,6 @@ def processString(selected_option):
                 print(Fore.RED + "Invalid URL..." + Style.RESET_ALL)
                 option_value = input_option_value(
                     options[selected_option]["name"])
-
         values[selected_option] = {
             "name": options[selected_option]["name"], "value": option_value}
         display_values(values)
@@ -252,7 +233,7 @@ def showAllValues():
     for key, value in values.items():
         print(Fore.BLUE + value["name"] + ": " + Fore.YELLOW + value["value"])
     print(Style.RESET_ALL)
-    input
+    input(Fore.YELLOW + "Press Enter to continue\n"+Style.RESET_ALL)
 
 def processCommand(values):
     cmd = "./archni "
