@@ -92,6 +92,7 @@ def display_values(values):
 
 def processNumber(selected_option):
     choice = selected_option
+    
     try:
         selected_sub_option = input(
             Fore.YELLOW + "Select sub-option: " + Style.RESET_ALL)
@@ -122,9 +123,14 @@ def processNumber(selected_option):
                 option_name = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["name"]
                 option_arg = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["arg"]
                 option_value = input_option_value(option_name)
-                values[selected_option] = {
-                    "name": option_name, "value": option_value, "arg": option_arg}
-                
+                if selected_option in values:
+                    values[selected_option][option_name] ["name"] = option_name
+                    values[selected_option][option_name] ["value"] = option_value
+                    values[selected_option][option_name] ["arg"] = option_arg
+                else:
+                    values[selected_option][option_name]  = {
+                        "name": option_name, "value": option_value, "arg": option_arg
+                    }
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
@@ -133,15 +139,21 @@ def processNumber(selected_option):
             if choice != "1" and choice != '8':
                 option_value = input_option_value(option_name)
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                values[selected_option] = {
-                    "name": option_name, "value": option_value, "arg": option_arg}
+                if selected_option in values:
+                    values[selected_option][option_name]["name"] = option_name
+                    values[selected_option][option_name]["value"] = option_value
+                    values[selected_option][option_name]["arg"] = option_arg
+                else:
+                    values[selected_option][option_name] = {
+                        "name": option_name, "value": option_value, "arg": option_arg
+                    }
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
             elif choice == "8":
                 if selected_sub_option == "1":
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                    values[selected_option] = {'name': option_name, 'value': '', 'arg': option_arg}
+                    values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
                 elif selected_sub_option == "2":
                     valarg = autoPlugin()
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
@@ -149,13 +161,19 @@ def processNumber(selected_option):
                     values[selected_option] = {'name': option_name, 'value': valarg, 'arg': option_arg}
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
-                selected_option = ""    
+                selected_option = ""
             else:
                 option_value = ""
                 option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
-                values[selected_option] = {
-                    "name": option_name, "value": option_value, "arg": option_arg}
-                
+                if selected_option in values:
+                    values[selected_option][option_name]["name"] = option_name
+                    values[selected_option][option_name]["value"] = option_value
+                    values[selected_option][option_name]["arg"] = option_arg
+                else:
+                    values[selected_option][option_name] = {
+                        "name": option_name, "value": option_value, "arg": option_arg
+                    }
+                    
                 display_values(values)
                 input(Fore.YELLOW + "Press Enter to continue..." + Style.RESET_ALL)
                 selected_option = ""
@@ -234,7 +252,7 @@ def showAllValues():
     for key, value in values.items():
         print(Fore.BLUE + value["name"] + ": " + Fore.YELLOW + value["value"])
     print(Style.RESET_ALL)
-
+    input
 
 def processCommand(values):
     cmd = "./archni "
@@ -284,32 +302,36 @@ while True:
                         filenames.append(filename)
                         cmd = "./arachni/bin/arachni " + \
                             values["U"]["value"] + " " + \
-                            "--check xss --report-save-path ./report/" + filename + ".afr"
+                            " --report-save-path ./report/" + filename + ".afr "
                         for key, value in values.items():
                             if key != "U" and key != "Report":
                                 cmd += value['arg'] + " " + \
                                     value["value"] + " "
                         selected_option = ""
-                        input(cmd)
-                        # os.setuid(1000)
-                        process = subprocess.Popen(
-                            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-                        while process.poll() is None:
-                            output = process.stdout.readline().decode().rstrip()
-                            print(output)
-                        process.communicate()
+                        print(cmd+"\n Want to continue? (Y/N)")
+                        choice = input().upper()
+                        if choice == "Y":                            
+                            process = subprocess.Popen(
+                                cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+                            while process.poll() is None:
+                                output = process.stdout.readline().decode().rstrip()
+                                print(output)
+                            process.communicate()
 
-                        cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
-                            '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/' + \
-                            filename+' && rm ./report/' + filename + '.html.zip'
-                        process = subprocess.Popen(
-                            cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-                        while process.poll() is None:
-                            output = process.stdout.readline().decode().rstrip()
-                            print(output)
-                        process.communicate()
-                        input(
-                            Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
+                            cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
+                                '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/' + \
+                                filename+' && rm ./report/' + filename + '.html.zip'
+                            process = subprocess.Popen(
+                                cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+                            while process.poll() is None:
+                                output = process.stdout.readline().decode().rstrip()
+                                print(output)
+                            process.communicate()
+                            input(
+                                Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
+                        elif choice == "N":
+                            selected_option = ""
+                            
                     except Exception as e:
                         input(e)
                 else:
@@ -318,6 +340,7 @@ while True:
                     selected_option = ""
             elif selected_option == "S":
                 showAllValues()
+                
                 selected_option = ""
 
             elif selected_option == "V":
