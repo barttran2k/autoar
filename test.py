@@ -298,9 +298,6 @@ def getArgVal():
 
 # Chương trình chính
 while True:
-    # if keyboard.is_pressed('ctrl+c'):
-    #     print(Fore.RED + "Exiting....." + Style.RESET_ALL)
-    #     exit(1)
     if selected_option == "E" or selected_option == "e":
         print(Fore.RED + "Exiting....." + Style.RESET_ALL)
         exit(1)
@@ -387,8 +384,5 @@ while True:
                         Fore.RED + "Nothing to view.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
     except:
-        # if keyboard.is_pressed('ctrl+c'):
-        #     print(Fore.RED + "Exiting....." + Style.RESET_ALL)
-        #     exit()
         if selected_option not in options.keys():
             selected_option = ""
