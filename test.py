@@ -62,7 +62,8 @@ def display_options(selected_option):
     else:
         print(Fore.GREEN + "_______________" +
               options[selected_option]["name"].upper() + "___________________")
-    print(Fore.BLUE+"0. Back")
+    if selected_option != 'v':
+        print(Fore.BLUE+"\n0. Back")
     print(Style.RESET_ALL)
 
 # Hiển thị tuỳ chọn con
@@ -199,6 +200,8 @@ def processNumber(selected_option):
                 display_values(values)
 
                 selected_option = ""
+            if choice == '0':
+                    selected_option = ""
             elif choice == "8":
                 if selected_sub_option == "1":
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
@@ -230,7 +233,7 @@ def processNumber(selected_option):
 
 
 def processString(selected_option):
-    if selected_option != "U":
+    if selected_option != "U":            
         option_value = input_option_value(options[selected_option]["name"])
         values[selected_option] = {
             "name": options[selected_option]["name"], "value": option_value}
@@ -275,10 +278,12 @@ def showFilenames():
     print(Style.RESET_ALL)
     choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
     while True:
-        if int(choice) < 1 or int(choice) > len(filenames):
+        if int(choice) < 0 or int(choice) > len(filenames):
             choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
         else:
             break
+    if choice == '0':
+        return 0
     return int(choice)-1
 
 # Auto gen autologin plugin
@@ -421,13 +426,16 @@ while True:
                 if len(filenames) > 0:
                     updateFilenames()
                     choice = showFilenames()
-                    filename = filenames[choice]
-                    filehtmlpath = "file://" + \
-                        os.path.abspath("report/" + filename+"/index.html")
-                    webbrowser.open(filehtmlpath, new=2)
-                    input(
-                        Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
-                    selected_option = ""
+                    if choice == 0:
+                        selected_option = ""
+                    else:
+                        filename = filenames[choice]
+                        filehtmlpath = "file://" + \
+                            os.path.abspath("report/" + filename+"/index.html")
+                        webbrowser.open(filehtmlpath, new=2)
+                        input(
+                            Fore.GREEN + "DONE!!!\nPlease Enter to continue" + Style.RESET_ALL)
+                        selected_option = ""
                 else:
                     input(
                         Fore.RED + "Nothing to view.\nEnter to continue" + Style.RESET_ALL)
