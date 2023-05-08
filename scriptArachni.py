@@ -12,7 +12,15 @@ from datetime import datetime
 selected_option = ""
 values = {}
 filenames = []
-
+target = ""
+status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
+match = re.search(r'Arachni ([\d\.]+)', status_ar)
+arachni_version = ""
+if match:
+    arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
+else:
+    arachni_version = "Arachni not found"
+    
 # Ch3ck report f0ld3r
 if not os.path.exists("report"):
     os.makedirs("report")
@@ -44,7 +52,12 @@ options = json.loads(open("options.json", "r", encoding='utf-8').read())
 
 def display_menu():
     os.system("cls" if os.name == "nt" else "clear")  # Xóa màn hình
+    print(Fore.GREEN + arachni_version)
     print(Fore.GREEN + "_______________MENU___________________\n")
+    if len(values) > 0 and "U" in values:
+        if values["U"]['value'] != "":
+            print(Fore.GREEN + "Target: " + Fore.YELLOW +
+                values["U"]['value'] + "\n")
     for key, value in options.items():
         print(Fore.BLUE + key + ". " + value["name"])
     print(Style.RESET_ALL)
