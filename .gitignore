@@ -1,3 +1,4 @@
 arachni/
 report/*
 .vscode/
+.DS_Store
