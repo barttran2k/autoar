@@ -29,7 +29,7 @@ try:
         arachni_version = "Arachni not found"
 except:
     arachni_version = "Arachni not found"   
-print(Fore.RED + "Arachni version: "+ Fore.YELLOW + arachni_version + Style.RESET_ALL)
+print( arachni_version + Style.RESET_ALL)
 
 # Nhập url cần scan
 url = input("Nhập URL: ")

@@ -24,7 +24,7 @@ while True:
             arachni_version = "Arachni not found"
     except:
         arachni_version = "Arachni not found"   
-    print(Fore.RED + "Arachni version: "+ Fore.YELLOW + arachni_version + Style.RESET_ALL)
+    print(arachni_version + Style.RESET_ALL)
     print(Fore.RED + "________________Load Script______________\n" + Style.RESET_ALL)
     print(Fore.YELLOW + "1. Auto XSS, SQLi, CSRF" + Style.RESET_ALL)
     print(Fore.YELLOW + "2. Full Script" + Style.RESET_ALL)
