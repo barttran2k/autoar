@@ -286,8 +286,12 @@ def updateFilenames():
 def showFilenames():
     count = 1
     for i in filenames:
-        print(Fore.BLUE+str(count)+". " + i)
-        count += 1
+        idpath = "report/"+i+"/index.html"
+        if os.path.exists(idpath):
+            print(Fore.BLUE+str(count)+". " + i)
+            count += 1
+        else:
+            filenames.remove(i)
     print(Style.RESET_ALL)
     choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
     while True:
@@ -329,7 +333,7 @@ def showAllValues():
             if "name" in value and 'arg' not in value:  # Nếu dữ liệu theo dạng cu
                 print(Fore.BLUE + value["name"] +
                       ": " + Fore.YELLOW + value["value"])
-            if "name" in value and 'arg' in value:  # Nếu dữ liệu theo dạng cu
+            if "name" in value and 'arg' in value:  # Nếu dữ liệu theo dạng moi
                 print(Fore.BLUE + value["arg"] +
                       ": " + Fore.YELLOW + value["value"])
             elif key.isnumeric():
