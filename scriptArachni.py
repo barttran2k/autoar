@@ -370,7 +370,7 @@ def getArgVal():
 while True:
     if selected_option == "E" or selected_option == "e":
         print(Fore.RED + "Exiting....." + Style.RESET_ALL)
-        exit(1)
+        exit()
     try:
         if not selected_option:
             display_menu()

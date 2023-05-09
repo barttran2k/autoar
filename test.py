@@ -1,9 +1,7 @@
 import os
 import json
 import subprocess
-import sys
 from colorama import init, Fore, Style
-# import keyboard
 import re
 import webbrowser
 from datetime import datetime
