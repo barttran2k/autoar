@@ -1,0 +1,11 @@
+http://10.0.0.2:8088/vulnerabilities/xss_r/?name=a#
+http://10.0.0.2:8088/login.php
+username=admin&password=password
+Logout
+
+rm -rf *.afr; ./arachni http://10.0.0.2:8088/vulnerabilities/xss_r/ --plugin=autologin:url=http://10.0.0.2:8088/login.php,parameters='username=admin&password=password',check='logout' --checks=*xss* --report-save-path 10.0.0.2.afr --scope-exclude-pattern=logout --scope-include-pattern=^http://10.0.0.2:8088/vulnerabilities/xss_r/ --scope-dom-depth-limit=10 
+
+
+./arachni/bin/arachni http://10.0.0.2:8088/vulnerabilities/xss_r/?name=a# --checks=*xss* --report-save-path ./report/10.0.0.20905033318.afr --plugin=autologin:url=http://10.0.0.2:8088/login.php,parameters="username=admin&password=password",check="Logout"  --scope-include-pattern=^http://10.0.0.2:8088/vulnerabilities/xss_r/?name=a#
+
+./arachni_reporter '10.0.0.2.afr' --reporter=html:outfile=10.0.0.2.html.zip && unzip 10.0.0.2.html.zip -d 10.0.0.2 && rm -rf 10.0.0.2.html.zip && xdg-open ./10.0.0.2/index.html

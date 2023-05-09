@@ -278,16 +278,18 @@ def updateFilenames():
         idpath = "report/"+i+"/index.html"
         if os.path.exists(idpath):
             filenames.append(i)
+        elif i in filenames and os.path.exists(idpath) is False:
+            filenames.remove(i)
     filenames = list(set(filenames))
 
 # Show filenames
-
-
 def showFilenames():
     count = 1
     for i in filenames:
-        print(Fore.BLUE+str(count)+". " + i)
-        count += 1
+        idpath = "report/"+i+"/index.html"
+        if os.path.exists(idpath):
+            print(Fore.BLUE+str(count)+". " + i)
+            count += 1
     print(Style.RESET_ALL)
     choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
     while True:

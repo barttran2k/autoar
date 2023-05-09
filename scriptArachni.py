@@ -1,9 +1,7 @@
 import os
 import json
 import subprocess
-import sys
 from colorama import init, Fore, Style
-# import keyboard
 import re
 import webbrowser
 from datetime import datetime
@@ -14,8 +12,7 @@ values = {}
 filenames = []
 target = ""
 try:
-    status_ar = subprocess.check_output(
-        ['./arachni/bin/arachni', '--version']).decode('utf-8')
+    status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
     match = re.search(r'Arachni ([\d\.]+)', status_ar)
     arachni_version = ""
     if match:
@@ -23,7 +20,13 @@ try:
     else:
         arachni_version = "Arachni not found"
 except:
-    arachni_version = "Arachni not found"
+    arachni_version = "Arachni not found"   
+# Ch3ck report f0ld3r
+if not os.path.exists("report"):
+    os.makedirs("report")
+    print("Created 'report' folder.")
+else:
+    print("'report' folder already exists.")
 
 
 def is_valid_url(url):
@@ -54,7 +57,7 @@ def display_menu():
     if len(values) > 0 and "U" in values:
         if values["U"]['value'] != "":
             print(Fore.GREEN + "Target: " + Fore.YELLOW +
-                  values["U"]['value'] + "\n")
+                values["U"]['value'] + "\n")
     for key, value in options.items():
         print(Fore.BLUE + key + ". " + value["name"])
     print(Style.RESET_ALL)
@@ -195,9 +198,10 @@ def processNumber(selected_option):
                     option_arg = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["arg"]
                     option_value = input_option_value(option_name)
                     add_value(selected_option, selected_sub_option_name,
-                              option_value, option_arg)
+                            option_value, option_arg)
                     display_values(values)
                     selected_option = ""
+            
 
         except:
             if choice != "1" and choice != '8':
@@ -210,7 +214,7 @@ def processNumber(selected_option):
 
                 selected_option = ""
             if choice == '0':
-                selected_option = ""
+                    selected_option = ""
             elif choice == "8":
                 if selected_sub_option == "1":
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
@@ -242,7 +246,7 @@ def processNumber(selected_option):
 
 
 def processString(selected_option):
-    if selected_option != "U":
+    if selected_option != "U":            
         option_value = input_option_value(options[selected_option]["name"])
         values[selected_option] = {
             "name": options[selected_option]["name"], "value": option_value}
@@ -274,16 +278,18 @@ def updateFilenames():
         idpath = "report/"+i+"/index.html"
         if os.path.exists(idpath):
             filenames.append(i)
+        elif i in filenames and os.path.exists(idpath) is False:
+            filenames.remove(i)
     filenames = list(set(filenames))
 
 # Show filenames
-
-
 def showFilenames():
     count = 1
     for i in filenames:
-        print(Fore.BLUE+str(count)+". " + i)
-        count += 1
+        idpath = "report/"+i+"/index.html"
+        if os.path.exists(idpath):
+            print(Fore.BLUE+str(count)+". " + i)
+            count += 1
     print(Style.RESET_ALL)
     choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
     while True:
@@ -312,7 +318,7 @@ def autoPlugin():
             url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)
     check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
-    valarg = 'autologin:url='+url+',parameters="'+parameter+'",check="'+check+'" '
+    valarg = 'autologin:url='+url+',parameters='+parameter+',check='+check
     return valarg
 
 # Show all values
@@ -364,7 +370,7 @@ def getArgVal():
 while True:
     if selected_option == "E" or selected_option == "e":
         print(Fore.RED + "Exiting....." + Style.RESET_ALL)
-        exit()
+        exit(1)
     try:
         if not selected_option:
             display_menu()
@@ -451,5 +457,5 @@ while True:
                         Fore.RED + "Nothing to view.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
     except:
-        if selected_option not in options.keys() or selected_option != "0":
+        if selected_option not in options.keys() or  selected_option != "0":
             selected_option = ""

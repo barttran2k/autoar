@@ -46,23 +46,26 @@ filename = re.search("(?<=://)([a-zA-Z0-9\-\.]+)", url).group(
 print("Auto login: (y/n)")
 autoLogin = ""
 if input() == "y":
-    url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
+    urllogin = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     while True:
         if is_valid_url(url):
             break
         else:
             print(Fore.RED + "Invalid URL..." + Style.RESET_ALL)
-            url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
+            urllogin = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)
     check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
-    autoLogin = "autologin:url=" + url + ",parameters='" + parameter + "',check='" + check + "' "
+    autoLogin = "autologin:url=" + urllogin + ",parameters='" + parameter + "',check='" + check + "' "
+
+scope_include_pattern = url.split("?")[0]
 # Chạy lệnh arachni để kiểm tra XSS trên trang web
 command = (
     "./arachni/bin/arachni "
     + url
     + " --checks=*sql* --report-save-path ./report/"
     + filename
-    + ".afr " + autoLogin
+    + ".afr " + autoLogin + " --scope-include-pattern=^"
+    + scope_include_pattern
 )
 process = subprocess.Popen(
     command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
