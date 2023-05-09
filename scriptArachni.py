@@ -298,8 +298,9 @@ def showFilenames():
         else:
             break
     if choice == '0':
-        return 0
-    return int(choice)-1
+        return '0'
+    else:
+        return int(choice)-1
 
 # Auto gen autologin plugin
 
@@ -441,7 +442,7 @@ while True:
                 if len(filenames) > 0:
                     updateFilenames()
                     choice = showFilenames()
-                    if choice == 0:
+                    if choice == '0':
                         selected_option = ""
                     else:
                         filename = filenames[choice]
