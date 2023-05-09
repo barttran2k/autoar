@@ -50,7 +50,7 @@ if input() == "y":
 command = (
     "./arachni/bin/arachni "
     + url
-    + " --checks=*xss* --report-save-path ./report/"
+    + " --checks=*sql* --report-save-path ./report/"
     + filename
     + ".afr " + autoLogin
 )
