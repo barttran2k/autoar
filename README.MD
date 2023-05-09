@@ -4,7 +4,7 @@
 
 ## Steps to reproduce:
 1. Install Arachni Framework to this folder
-   #### Link for download: https://github.com/Arachni/arachni/releases 
+   #### Link for download: `https://github.com/Arachni/arachni/releases`
 2. Rename arachni folder to 'arachni'
 3. Run the following command: `pip install -r requirements.txt` for installing the libs
 4. Run the following command: `chmod +x Arachni.sh` for running the script
