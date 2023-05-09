@@ -13,6 +13,16 @@ while process.poll() is None:
     output = process.stdout.readline().decode().rstrip()
     print(output)
 process.communicate()
+cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
+                                '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/' + \
+                                filename+' && rm ./report/' + filename + '.html.zip'
+process = subprocess.Popen(
+    cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+while process.poll() is None:
+    output = process.stdout.readline().decode().rstrip()
+    print(output)
+process.communicate()
+
 idpath = "report/"+filename+"/index.html"
 if os.path.exists(idpath):
     cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
