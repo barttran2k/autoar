@@ -42,6 +42,7 @@ while True:
         print(Fore.YELLOW + "1. XSS" + Style.RESET_ALL)
         print(Fore.YELLOW + "2. SQLi" + Style.RESET_ALL)
         print(Fore.YELLOW + "3. CSRF" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Back" + Style.RESET_ALL)
         print(Fore.RED + "__________________________________________________" + Style.RESET_ALL)
         print()
         print()
