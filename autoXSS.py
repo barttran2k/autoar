@@ -19,7 +19,17 @@ def is_valid_url(url):
         re.IGNORECASE,
     )
     return bool(regex.match(url))
-
+try:
+    status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
+    match = re.search(r'Arachni ([\d\.]+)', status_ar)
+    arachni_version = ""
+    if match:
+        arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
+    else:
+        arachni_version = "Arachni not found"
+except:
+    arachni_version = "Arachni not found"   
+print(Fore.RED + "Arachni version: "+ Fore.YELLOW + arachni_version + Style.RESET_ALL)
 
 # Nhập url cần scan
 url = input("Nhập URL: ")
