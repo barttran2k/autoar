@@ -13,14 +13,16 @@ selected_option = ""
 values = {}
 filenames = []
 target = ""
-status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
-match = re.search(r'Arachni ([\d\.]+)', status_ar)
-arachni_version = ""
-if match:
-    arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
-else:
-    arachni_version = "Arachni not found"
-    
+try:
+    status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
+    match = re.search(r'Arachni ([\d\.]+)', status_ar)
+    arachni_version = ""
+    if match:
+        arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
+    else:
+        arachni_version = "Arachni not found"
+except:
+    arachni_version = "Arachni not found"   
 # Ch3ck report f0ld3r
 if not os.path.exists("report"):
     os.makedirs("report")
@@ -286,12 +288,8 @@ def updateFilenames():
 def showFilenames():
     count = 1
     for i in filenames:
-        idpath = "report/"+i+"/index.html"
-        if os.path.exists(idpath):
-            print(Fore.BLUE+str(count)+". " + i)
-            count += 1
-        else:
-            filenames.remove(i)
+        print(Fore.BLUE+str(count)+". " + i)
+        count += 1
     print(Style.RESET_ALL)
     choice = input(Fore.YELLOW + "Select filename: " + Style.RESET_ALL)
     while True:
@@ -333,7 +331,7 @@ def showAllValues():
             if "name" in value and 'arg' not in value:  # Nếu dữ liệu theo dạng cu
                 print(Fore.BLUE + value["name"] +
                       ": " + Fore.YELLOW + value["value"])
-            if "name" in value and 'arg' in value:  # Nếu dữ liệu theo dạng moi
+            if "name" in value and 'arg' in value:  # Nếu dữ liệu theo dạng cu
                 print(Fore.BLUE + value["arg"] +
                       ": " + Fore.YELLOW + value["value"])
             elif key.isnumeric():
