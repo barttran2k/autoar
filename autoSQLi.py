@@ -55,7 +55,7 @@ if input() == "y":
             urllogin = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)
     check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
-    autoLogin = "autologin:url=" + urllogin + ",parameters='" + parameter + "',check='" + check + "' "
+    autoLogin = '--plugin=autologin:url=' + urllogin + ',parameters="' + parameter + '",check="' + check + '" '
 
 scope_include_pattern = url.split("?")[0]
 # Chạy lệnh arachni để kiểm tra XSS trên trang web
