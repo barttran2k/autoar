@@ -24,12 +24,6 @@ try:
         arachni_version = "Arachni not found"
 except:
     arachni_version = "Arachni not found"
-# Ch3ck report f0ld3r
-if not os.path.exists("report"):
-    os.makedirs("report")
-    print("Created 'report' folder.")
-else:
-    print("'report' folder already exists.")
 
 
 def is_valid_url(url):

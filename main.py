@@ -2,7 +2,13 @@ from colorama import init, Fore, Style
 import subprocess, re, os
 
 init()
-
+# Ch3ck report f0ld3r
+if not os.path.exists("report"):
+    os.makedirs("report")
+    print("Created 'report' folder.")
+else:
+    print("'report' folder already exists.")
+    
 while True:
     if os.name == 'nt':
         os.system('cls')
