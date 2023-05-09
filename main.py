@@ -34,6 +34,10 @@ while True:
     print()
     choice = input(Fore.YELLOW + "Choice: " + Style.RESET_ALL)
     if choice == '1':
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('clear')
         print(Fore.RED + "________________Auto XSS, SQLi, CSRF______________\n" + Style.RESET_ALL)
         print(Fore.YELLOW + "1. XSS" + Style.RESET_ALL)
         print(Fore.YELLOW + "2. SQLi" + Style.RESET_ALL)
@@ -43,13 +47,22 @@ while True:
         print()
         choice = input(Fore.YELLOW + "Choice: " + Style.RESET_ALL)
         if choice == '1':
-            os.system('clear')
+            if os.name == 'nt':
+                os.system('cls')
+            else:
+                os.system('clear')
             import autoXSS
         elif choice == '2':
-            os.system('clear')
+            if os.name == 'nt':
+                os.system('cls')
+            else:
+                os.system('clear')
             import autoSQLi
         elif choice == '3':
-            os.system('clear')
+            if os.name == 'nt':
+                os.system('cls')
+            else:
+                os.system('clear')
             import autoCSRF
     elif choice == '2':
         import scriptArachni
