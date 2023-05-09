@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import subprocess,re,os
 from datetime import datetime
+import webbrowser
 
 # Nhập url cần scan
 url = input("Nhập URL: ")
@@ -25,15 +26,7 @@ process.communicate()
 
 idpath = "report/"+filename+"/index.html"
 if os.path.exists(idpath):
-    cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
-                                    '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/' + \
-                                    filename+' && rm ./report/' + filename + '.html.zip'
-    process = subprocess.Popen(
-        cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    while process.poll() is None:
-        output = process.stdout.readline().decode().rstrip()
-        print(output)
-    process.communicate()
+    webbrowser.open(idpath,new=2)
     input("DONE!!!\nPlease Enter to continue")
 else:
     print("Lỗi trong quá trình kiểm tra")
