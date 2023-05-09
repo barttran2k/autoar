@@ -13,14 +13,16 @@ selected_option = ""
 values = {}
 filenames = []
 target = ""
-status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
-match = re.search(r'Arachni ([\d\.]+)', status_ar)
-arachni_version = ""
-if match:
-    arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
-else:
-    arachni_version = "Arachni not found"
-    
+try:
+    status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
+    match = re.search(r'Arachni ([\d\.]+)', status_ar)
+    arachni_version = ""
+    if match:
+        arachni_version = "Arachni version: "+Fore.YELLOW+(match.group(1))
+    else:
+        arachni_version = "Arachni not found"
+except:
+    arachni_version = "Arachni not found"   
 # Ch3ck report f0ld3r
 if not os.path.exists("report"):
     os.makedirs("report")
