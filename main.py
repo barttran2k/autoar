@@ -2,7 +2,12 @@ from colorama import init, Fore, Style
 import subprocess, re, os
 
 init()
+
 while True:
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
     print(''' ____             _  _______ _____ __  __ 
 |  _ \           | ||__   __/ ____|  \/  |
 | |_) | __ _  ___| |__ | | | |    | \  / |
