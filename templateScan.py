@@ -95,7 +95,7 @@ class ArachniScanner:
             + filename
             + " && rm ./report/"
             + filename
-            + ".html.zip"
+            + ".html.zip"+ " && rm ./report/*.afr"
         )
         process = subprocess.Popen(
             cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
@@ -168,7 +168,7 @@ class ArachniScanner:
             + filename
             + " && rm ./report/"
             + filename
-            + ".html.zip"
+            + ".html.zip"+ " && rm ./report/*.afr"
         )
         process = subprocess.Popen(
             cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
@@ -243,7 +243,7 @@ class ArachniScanner:
             + filename
             + " && rm ./report/"
             + filename
-            + ".html.zip"
+            + ".html.zip" + " && rm ./report/*.afr"
         )
         process = subprocess.Popen(
             cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True

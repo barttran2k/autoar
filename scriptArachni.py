@@ -416,7 +416,7 @@ while True:
 
                             cmd_genHTML = './arachni/bin/arachni_reporter ./report/' + filename + '.afr --reporter=html:outfile=./report/' + filename + \
                                 '.html.zip && unzip ./report/' + filename + '.html.zip -d ./report/' + \
-                                filename+' && rm ./report/' + filename + '.html.zip'
+                                filename+' && rm ./report/' + filename + '.html.zip'+ " && rm ./report/*.afr"
                             process = subprocess.Popen(
                                 cmd_genHTML, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                             while process.poll() is None:
