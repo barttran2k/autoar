@@ -1,6 +1,6 @@
 from colorama import init, Fore, Style
 import subprocess, re, os
-
+from templateScan import ArachniScanner
 init()
 # Ch3ck report f0ld3r
 if not os.path.exists("report"):
@@ -39,6 +39,7 @@ while True:
     print()
     print()
     choice = input(Fore.YELLOW + "Choice: " + Style.RESET_ALL)
+    scan = ArachniScanner()
     if choice == '1':
         if os.name == 'nt':
             os.system('cls')
@@ -58,19 +59,19 @@ while True:
                 os.system('cls')
             else:
                 os.system('clear')
-            import autoXSS
+            scan.scanXSS()
         elif choice == '2':
             if os.name == 'nt':
                 os.system('cls')
             else:
                 os.system('clear')
-            import autoSQLi
+            scan.scanSQL()
         elif choice == '3':
             if os.name == 'nt':
                 os.system('cls')
             else:
                 os.system('clear')
-            import autoCSRF
+            scan.scanCSRF()
     elif choice == '2':
         import scriptArachni
     elif choice == '3':
