@@ -10,5 +10,5 @@
 5. Run the following command: `./Arachni.sh` for running the script
 
 ## Notes:
-Work with #MacOS and Linux so very well, but on #Windows is random :v
+Work with ***MacOS*** and ***Linux*** so very ***well***, but on ***Windows*** is ***random*** :v
 Have fun with my script and don't forget to give me a star if you like it! :D
