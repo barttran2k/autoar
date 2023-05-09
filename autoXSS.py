@@ -32,7 +32,7 @@ except:
 print( arachni_version + Style.RESET_ALL)
 
 # Nhập url cần scan
-url = input("Nhập URL: ")
+url = input("Input URL for scan: ")
 while True:
     if is_valid_url(url):
         break
@@ -55,7 +55,7 @@ if input() == "y":
             url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)
     check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
-    autoLogin = "autologin:url=" + url + ",parameters=" + parameter + ",check=" + check
+    autoLogin = "autologin:url=" + url + ",parameters='" + parameter + "',check='" + check + "' "
 # Chạy lệnh arachni để kiểm tra XSS trên trang web
 command = (
     "./arachni/bin/arachni "

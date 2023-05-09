@@ -14,7 +14,8 @@ values = {}
 filenames = []
 target = ""
 try:
-    status_ar = subprocess.check_output(['./arachni/bin/arachni', '--version']).decode('utf-8')
+    status_ar = subprocess.check_output(
+        ['./arachni/bin/arachni', '--version']).decode('utf-8')
     match = re.search(r'Arachni ([\d\.]+)', status_ar)
     arachni_version = ""
     if match:
@@ -22,7 +23,7 @@ try:
     else:
         arachni_version = "Arachni not found"
 except:
-    arachni_version = "Arachni not found"   
+    arachni_version = "Arachni not found"
 # Ch3ck report f0ld3r
 if not os.path.exists("report"):
     os.makedirs("report")
@@ -59,7 +60,7 @@ def display_menu():
     if len(values) > 0 and "U" in values:
         if values["U"]['value'] != "":
             print(Fore.GREEN + "Target: " + Fore.YELLOW +
-                values["U"]['value'] + "\n")
+                  values["U"]['value'] + "\n")
     for key, value in options.items():
         print(Fore.BLUE + key + ". " + value["name"])
     print(Style.RESET_ALL)
@@ -200,10 +201,9 @@ def processNumber(selected_option):
                     option_arg = options[selected_option]["options"][selected_sub_option]["options"][selected_sub_option_name]["arg"]
                     option_value = input_option_value(option_name)
                     add_value(selected_option, selected_sub_option_name,
-                            option_value, option_arg)
+                              option_value, option_arg)
                     display_values(values)
                     selected_option = ""
-            
 
         except:
             if choice != "1" and choice != '8':
@@ -216,7 +216,7 @@ def processNumber(selected_option):
 
                 selected_option = ""
             if choice == '0':
-                    selected_option = ""
+                selected_option = ""
             elif choice == "8":
                 if selected_sub_option == "1":
                     option_arg = options[selected_option]["options"][selected_sub_option]["arg"]
@@ -248,7 +248,7 @@ def processNumber(selected_option):
 
 
 def processString(selected_option):
-    if selected_option != "U":            
+    if selected_option != "U":
         option_value = input_option_value(options[selected_option]["name"])
         values[selected_option] = {
             "name": options[selected_option]["name"], "value": option_value}
@@ -318,7 +318,7 @@ def autoPlugin():
             url = input(Fore.YELLOW + "Input URL: " + Style.RESET_ALL)
     parameter = input(Fore.YELLOW + "Input parameter: " + Style.RESET_ALL)
     check = input(Fore.YELLOW + "Input check: " + Style.RESET_ALL)
-    valarg = 'autologin:url='+url+',parameters='+parameter+',check='+check
+    valarg = 'autologin:url='+url+',parameters="'+parameter+'",check="'+check+'" '
     return valarg
 
 # Show all values
@@ -457,5 +457,5 @@ while True:
                         Fore.RED + "Nothing to view.\nEnter to continue" + Style.RESET_ALL)
                     selected_option = ""
     except:
-        if selected_option not in options.keys() or  selected_option != "0":
+        if selected_option not in options.keys() or selected_option != "0":
             selected_option = ""
